@@ -1,0 +1,8 @@
+<div>
+  <nav class="nav">
+    <a class="nav-link" [ngClass]="{active: chosenList === 'all'}" (click)="onChoose('all')" style="cursor: pointer;">All</a>
+    <a class="nav-link" [ngClass]="{active: chosenList === 'light'}" (click)="onChoose('light')" style="cursor: pointer;">Light</a>
+    <a class="nav-link" [ngClass]="{active: chosenList === 'dark'}" (click)="onChoose('dark')" style="cursor: pointer;">Dark</a>
+  </nav>
+  <app-list [characters]="getCharacters()"></app-list>
+</div>

@@ -19,7 +19,21 @@
           </li>
         </div>
 
-        <div *ngIf="!onlyOdd">
+        <!-- <div *ngIf="!onlyOdd">
+          <li
+            class="list-group-item"
+            [ngClass]="{ odd: number % 2 !== 0 }"
+            [ngStyle]="{
+              backgroundColor: number % 2 !== 0 ? 'yellow' : 'transparent'
+            }"
+            *ngFor="let number of evenNumbers"
+          >
+            {{ number }}
+          </li>
+        </div> -->
+
+        <!-- structural directive -->
+        <div *appUnless=" onlyOdd">
           <li
             class="list-group-item"
             [ngClass]="{ odd: number % 2 !== 0 }"
@@ -32,6 +46,26 @@
           </li>
         </div>
       </ul>
+
+      <!-- attribute directive -->
+
+      <!-- not best practice, usually get error -->
+      <p appBasicHighLight>Style with basic directive</p>
+
+      <!-- use this renderer method instead -->
+      <p appBetterHighlight>Style with better directive 1</p>
+
+      <p appBetterHighlight [defaultColor]="'yellow'" [highlightColor]="'red'">
+        Style with better directive 2
+      </p>
+
+      <!-- Switch case -->
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">Value is 5</p>
+        <p *ngSwitchCase="10">Value is 10</p>
+        <p *ngSwitchCase="69">Value is 69</p>
+        <p *ngSwitchDefault>Value is Default</p>
+      </div>
     </div>
   </div>
 </div>
